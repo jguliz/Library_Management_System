@@ -1,5 +1,4 @@
 import "./HeaderAfter.css";
-import { useParams } from 'react-router-dom';
 
 const HeaderAfter = () => {
     const loggedInItems = [
