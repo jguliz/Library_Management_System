@@ -4,8 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 
 
 const Header = () => {
-    const { userId } = useParams();
-
     const items = [
         // {title: "My Books", link: "/mybooks"},
         // {title: "Browse Books", link: "/browsebooks"},
@@ -30,7 +28,6 @@ const Header = () => {
                     </div>
 
                     <div className="nav-links">
-                        {userId ? (
                             <>
                                 {items.map((item) => (
                                     <Link key={item.title} to={item.link} className="link">
@@ -57,7 +54,7 @@ const Header = () => {
                                 ))}
                                 <Link className="button" to="/login">Log in</Link>
                             </>
-                        )}
+                        
                     </div>
                 </nav>
             </div>
