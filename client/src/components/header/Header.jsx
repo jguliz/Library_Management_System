@@ -46,10 +46,14 @@ const Header = () => {
                                     </Link>
                                 ))}
                                 <button
-                                    className="logout_button"
-                                    onClick={handleLogout}
+                                    className="button"
+                                    onClick={() => {
+                                        localStorage.clear();
+                                        // sends to login page
+                                        window.location.href = "/login";
+                                    }}
                                 >
-                                    Logout
+                                    Login
                                 </button>
                             </>
                         ) : (
