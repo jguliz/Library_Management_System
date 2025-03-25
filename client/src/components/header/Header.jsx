@@ -18,10 +18,31 @@ const Header = () => {
         { title: "Account", link: `/account` }  
     ];
 
-    const guestItems = ["My Books", "Browse Books", "Browse Devices"];
+    const guestItems = [
+        { title: "My Books", link: "/" },
+        { title: "Browse Books", link: "/" },
+        { title: "Browse Devices", link: "/" }
+    ];
 
     const handleLogout = () => {
-        localStorage.clear();
+        const token = localStorage.getItem("token");
+        
+        if (token) {
+            try {
+                // Call the logout endpoint on your server
+                fetch("https://library-management-system-gf9d.onrender.com/logout", {
+                    method: 'DELETE',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                });
+            } catch (error) {
+                console.error("Error logging out:", error);
+            }
+        }
+        
+        localStorage.removeItem("token");
         setIsLoggedIn(false);
         window.location.href = "/login";
     };
@@ -46,22 +67,18 @@ const Header = () => {
                                     </Link>
                                 ))}
                                 <button
-                                    className="button"
-                                    onClick={() => {
-                                        localStorage.clear();
-                                        // sends to login page
-                                        window.location.href = "/login";
-                                    }}
+                                    className="logout_button"
+                                    onClick={handleLogout}
                                 >
-                                    Login
+                                    Logout
                                 </button>
                             </>
                         ) : (
                             <>
                                 {guestItems.map((item) => (
-                                    <a key={item} href="/" className="link">
-                                        {item}
-                                    </a>
+                                    <Link key={item.title} to={item.link} className="link">
+                                        {item.title}
+                                    </Link>
                                 ))}
                                 <Link className="button" to="/login">Log in</Link>
                             </>
