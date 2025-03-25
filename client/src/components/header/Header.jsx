@@ -11,10 +11,10 @@ const Header = () => {
         // {title: "Browse Books", link: "/browsebooks"},
         // {title: "Browse Devices",link: "/browsedevices"},
         // {title: "Account", link: "/account"},  
-        { title: "My Books", link: `/mybooks/${userId}` },
-        { title: "Browse Books", link: `/browsebooks/${userId}` },
-        { title: "Browse Devices", link: `/browsedevices/${userId}` },
-        { title: "Account", link: `/account/${userId}` }  
+        { title: "My Books", link: `/mybooks` },
+        { title: "Browse Books", link: `/browsebooks` },
+        { title: "Browse Devices", link: `/browsedevices` },
+        { title: "Account", link: `/account` }  
     ]
 
     const guestItems = ["My Books", "Browse Books", "Browse Devices"];
@@ -25,9 +25,7 @@ const Header = () => {
                 <nav className="nav">
                     <div className="logo">
                         {/* routing depends on if logged in */}
-                        <Link to={userId ? `/user/${userId}` : "/login"}>
                             <img src="/logo.png" alt="Logo" />
-                        </Link>
                         <h1>Cougar Public Library</h1>
                     </div>
 
