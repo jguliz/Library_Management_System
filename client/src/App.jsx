@@ -17,8 +17,11 @@ import BrowseDevices from './pages/browse/browsedevices';
 function App() {
   return (
     <Routes>
+      {/* Default route is now Login */}
+      <Route path="/" element={<Login/>} />
+      
       {/* Public routes */}
-      <Route path="/" element={<HomePage/>} />
+      <Route path="/home" element={<HomePage/>} />
       <Route path="/login" element={<Login/>} />
       
       {/* User routes */}

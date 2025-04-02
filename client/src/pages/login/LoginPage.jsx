@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import axios from 'axios';
 import './LoginPage.css';
 
+// Icon components to match Librarian Dashboard style
+const UserIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="login-icon">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+    <circle cx="12" cy="7" r="4"></circle>
+  </svg>
+);
+
+const LockIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="login-icon">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+  </svg>
+);
+
 const Login = () => {
     const [userID, setUserID] = useState('');
     const [password, setPassword] = useState('');
@@ -77,8 +92,8 @@ const Login = () => {
             <div className="login-container">
                 <div className="login-header">
                     <img src="/logo.png" alt="Cougar Public Library Logo" className="login-logo" />
-                    <h1>Welcome to Cougar Public Library</h1>
-                    <p>Please sign in to access your account</p>
+                    <h1>Cougar Library</h1>
+                    <p>Secure Access Portal</p>
                 </div>
                 
                 <form id="login_form" className="login-form" onSubmit={handleSubmit}>
@@ -91,12 +106,12 @@ const Login = () => {
                     <div className="form-group">
                         <label htmlFor="userId" className="form-label">User ID</label>
                         <div className="input-with-icon">
-                            <span className="input-icon">👤</span>
+                            <span className="input-icon"><UserIcon /></span>
                             <input 
                                 id="userId"
                                 type="text" 
                                 className="form-input"
-                                placeholder="Enter Your 7-digit ID"
+                                placeholder="Enter Your User ID"
                                 value={userID} 
                                 minLength={7}
                                 maxLength={7}
@@ -104,13 +119,13 @@ const Login = () => {
                                 required
                             />
                         </div>
-                        <p className="input-hint">Student: 7######, Alumni: 8######, Faculty: 9######, Librarian: 5######</p>
+                        <p className="input-hint">Enter your unique library user ID</p>
                     </div>
                     
                     <div className="form-group">
                         <label htmlFor="password" className="form-label">Password</label>
                         <div className="input-with-icon">
-                            <span className="input-icon">🔒</span>
+                            <span className="input-icon"><LockIcon /></span>
                             <input 
                                 id="password"
                                 type="password" 
